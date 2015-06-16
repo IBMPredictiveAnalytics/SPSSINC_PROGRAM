@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+<link rel="stylesheet" type="text/css" href="extsyntax.css" />
+<title>SPSSINC PROGRAM Extension Command</title>
+
+
+
+</head>
+
+<body>
+<h1>SPSSINC PROGRAM Extension Command</h1>
+
+<p>Run arbitrary Python programs with arguments without
+turning them into extension commands</p>
+<div class="syntax">
+<p>SPSSINC PROGRAM <em>programname</em><sup>&#42;</sup> <em>arguments</em>  </p>
+
+<p>/HELP</p>
+
+<p><sup>&#42;</sup> Required
+<sup>&#42;&#42;</sup> Default</p>
+</div>
+<p>SPSSINC PROGRAM /HELP displays this help and does nothing else.</p>
+
+<pre class="example"><code>SPSSINC PROGRAM testpgm.mypgn x=age y = income z=.05.
+</code></pre>
+
+<p><strong>programname</strong> specifies the Python function to be run.  It has the form <em>modulename.functionname</em> or, 
+if already defined in the current session, it can just be
+<em>functionname</em>.  Note that modulename and functionname are case
+sensitive.</p>
+
+<p><strong>arguments</strong>.  The argument values depend on the particular program being run.  Consult the documentation
+for the particular program to find the specifications.</p>
+
+<h3>For the Program Developer</h3>
+
+<p><strong>arguments</strong> is arbitrary and will be passed to the specified function in sys.argv
+mimicing the general Python command-line argument mechansm.
+The arguments are passed as tokenized by the SPSS Universal Parser.
+The main implication of this is that  text like  </p>
+
+<pre><code>method=least-squares
+</code></pre>
+
+<p>will appear in the argument list as </p>
+
+<pre><code>[&#39;method&#39;, &#39;=&#39;, &#39;least&#39;, &#39;-&#39;, &#39;squares&#39;]
+</code></pre>
+
+<p>unless it is all quoted, regardless of whether or not it is written with spaces.</p>
+
+
+
+<pre class="example"><code>SPSSINC PROGRAM testpgm.mypgn a b c=100.
+testpgm.mypgm:
+mport spss, sys
+def mypgm():
+    print sys.argv
+</code></pre>
+
+<p>produces</p>
+
+<pre><code>[testpgm.mypgm. &#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;=&#39;, &#39;100&#39;]
+</code></pre>
+
+<p>The Python optparse module may be helpful in parsing these options</p>
+
+<p>Note that Python built-in functions are not supported, because this 
+mechanism does not provide for return values and because those functions
+do not use sys.argv.</p>
+
+<p>Exceptions are captured and turned into a Warnings pivot table.</p>
+
+<p>&copy; Copyright IBM Corp. 1989, 2014</p>
+
+</body>
+
+</html>
+
