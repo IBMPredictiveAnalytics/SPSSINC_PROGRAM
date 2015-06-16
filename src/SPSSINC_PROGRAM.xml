@@ -1,0 +1,6 @@
+<Command xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extension.xsd" Name="SPSSINC PROGRAM" Language="Python">
+	<Subcommand Name="" IsArbitrary="True" Occurrence="Optional">
+		<Parameter Name="PROGRAM" ParameterType="LeadingToken"/>
+	</Subcommand>
+	<Subcommand Name="HELP" Occurrence="Optional"/>
+</Command>
