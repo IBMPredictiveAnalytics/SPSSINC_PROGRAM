@@ -1,11 +1,11 @@
 # SPSSINC PROGRAM
-## Extension command to run arbitrary Python programs without tu
- This extension command allows you to run Python programs   as if they were extension commands but without actually making them i  nto such.  The primary benefit is that it is easy to pass parameters   to programs this way.
+## Extension command to run arbitrary Python programs without turning them into extension commands
+ This extension command allows you to run Python programs as if they were extension commands but without actually making them into such. The primary benefit is that it is easy to pass parameters to programs this way.
 
 ---
 Requirements
 ----
-- IBM SPSS Statistics 18 or later
+- IBM SPSS Statistics 18 or later and the corresponding IBM SPSS Statistics-Integration Plug-in for Python.
 
 ---
 Installation intructions
