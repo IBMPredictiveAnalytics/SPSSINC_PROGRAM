@@ -3,7 +3,7 @@
 # *
 # * IBM SPSS Products: Statistics Common
 # *
-# * (C) Copyright IBM Corp. 1989, 2014
+# * (C) Copyright IBM Corp. 1989, 2020
 # *
 # * US Government Users Restricted Rights - Use, duplication or disclosure
 # * restricted by GSA ADP Schedule Contract with IBM Corp. 
@@ -81,13 +81,13 @@ def Run(args):
     except:
         def _(msg):
             return msg
-    if args[args.keys()[0]].has_key("HELP"):
+    if "HELP" in args[list(args.keys())[0]]:
         #print helptext
         helper()
         return
     try:
         try:
-            args = args[args.keys()[0]][''][0]['TOKENLIST']
+            args = args[list(args.keys())[0]][''][0]['TOKENLIST']
             pgm = args[0]
         except:
             raise ValueError("The name of the program to run must be the first parameter of the command, but no parameters were given")
@@ -132,7 +132,7 @@ def helper():
     # webbrowser.open seems not to work well
     browser = webbrowser.get()
     if not browser.open_new(helpspec):
-        print("Help file not found:" + helpspec)
+        print(("Help file not found:" + helpspec))
 try:    #override
     from extension import helper
 except:
@@ -199,7 +199,7 @@ class NonProcPivotTable(object):
 def attributesFromDict(d):
     """build self attributes from a dictionary d."""
     self = d.pop('self')
-    for name, value in d.iteritems():
+    for name, value in d.items():
         setattr(self, name, value)
         
 def _isseq(obj):
@@ -209,7 +209,7 @@ def _isseq(obj):
 
     # differs from operator.isSequenceType() in being False for a string
 
-    if isinstance(obj, basestring):
+    if isinstance(obj, str):
         return False
     else:
         try:

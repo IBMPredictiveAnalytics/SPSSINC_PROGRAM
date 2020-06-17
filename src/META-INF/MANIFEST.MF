@@ -2,7 +2,7 @@ Name: SPSSINC PROGRAM
 Dialog-Specs: SPSSINC_PROGRAM.spd
 Command-Specs: SPSSINC_PROGRAM.xml
 Code-Files: SPSSINC_PROGRAM.py
-Misc-Files: markdown.html,extsyntax.css,IBMdialogicon.png
+Misc-Files: extsyntax.css,IBMdialogicon.png,markdown.html
 Summary: Extension command to run arbitrary Python programs without tu
  rning them into extension commands
 Description: This extension command allows you to run Python programs 
@@ -10,7 +10,9 @@ Description: This extension command allows you to run Python programs
  nto such.  The primary benefit is that it is easy to pass parameters 
  to programs this way.
 Author: JKP, IBM SPSS
-Version: 1.0.4
-Product-Version: 18
+Version: 2.0.0
+Product-Version: 24
+Product-Version-Maximum: 99
 Plugins: Python
+Python-Version: 3
 Translation-Catalogues: lang
