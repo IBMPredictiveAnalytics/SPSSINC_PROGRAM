@@ -43,7 +43,7 @@
 # is not called.
 
 __author__  =  'spss, jkp'
-__version__ =  '1.0.1'
+__version__ =  '1.0.2'
 version = __version__
 
 # history
@@ -63,17 +63,7 @@ SPSSINC PROGRAM testpgm.mypgn x=age y = income z=.05.
 import spss, sys
 
 def Run(args):
-    ##debugging
-    #try:
-        #import wingdbstub
-        #if wingdbstub.debugger != None:
-            #import time
-            #wingdbstub.debugger.StopDebug()
-            #time.sleep(2)
-            #wingdbstub.debugger.StartDebug()
-    #except:
-        #pass
-    
+
     #enable localization
     global _
     try:
@@ -111,11 +101,17 @@ def Run(args):
         warnings = NonProcPivotTable("Warnings",tabletitle=_("Warnings "))
         msg = sys.exc_info()[1]
         if _isseq(msg):
-            msg = ",".join([(isinstance(item, (float, int)) or item is None) and str(item) or item for item in msg])
-        if len(msg) == 0:   # no message with exception
+            msg = ",".join(
+                [
+                    (isinstance(item, (float, int)) or item is None)
+                    and str(item)
+                    or item
+                    for item in msg
+                ]
+            )
+        if msg is None:  # no message with exception # Python3 change
             msg = str(sys.exc_info()[0])  # if no message, use the type of the exception (ugly)
-        warnings.addrow(msg)
-        sys.exc_clear()
+        warnings.addrow(str(msg))
         warnings.generate()
 
 def helper():
