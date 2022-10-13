@@ -1,4 +1,5 @@
 Name: SPSSINC PROGRAM
+Display-Name: Run Python Program
 Dialog-Specs: SPSSINC_PROGRAM.spd
 Command-Specs: SPSSINC_PROGRAM.xml
 Code-Files: SPSSINC_PROGRAM.py
